@@ -1,30 +1,31 @@
 clc;clear all;
-satir=input('satýr sayýsý giriniz=');
-x=1; sayac=0; y=satir;
-for i=1:satir
-    z=1;
-    if z <= sayac
-        num=1;
-        fprintf('%d',num);
-        if num~=y
-            for a=1:y-1
-                num=num+1;
-                fprintf('%d',num);
-            end
-        else
-            for j=1:y-1
-                if num~=1
-                    num=num-1;
-                    fprintf('%d',num);
-                else
-                    fprinrf('\n');
-                    sayac=sayac+1;
-                    y=y-1;
-                end
-            end    
-            fprintf(' ');
-            z=z+1;
-        end
-   end
-        
-end    
+a=[2 -1 -1 3 ; 6 -2 3 0 ; -4 2 3 -3 ; 2 0 4 -7 ];
+b=[9;11;-3;-14];
+x1(1)=0; x2(1)=0; x3(1)=0; x4(1)=0;
+for k=1:3
+   x1(k+1)=1/2*(9+(x2(k))+(x3(k))-(3*(x4(k))));
+   x2(k+1)=(-1/2)*(11-(6*x1(k))-(3*(x3(k))));
+   x3(k+1)=1/3*(-3+(4*x1(k))-(2*x2(k))+(3*x4(k)));
+   x4(k+1)=(-1/7)*(-14-(2*x1(k))-(4*x3(k)));
+end
+
+for j=4:8
+    x1(j+1)=x1(j)-(((x1(j)-x1(j-1))^2)/(x1(j)-2*(x1(j-1))+x1(j-2)));
+    x2(j+1)=x2(j)-(((x2(j)-x2(j-1))^2)/(x2(j)-2*(x2(j-1))+x2(j-2)));
+    x3(j+1)=x3(j)-(((x3(j)-x3(j-1))^2)/(x3(j)-2*(x3(j-1))+x3(j-2)));
+    x4(j+1)=x4(j)-(((x4(j)-x4(j-1))^2)/(x4(j)-2*(x4(j-1))+x4(j-2)));
+       if (abs(x1(j+1)-x1(j))<=0.0001)
+           fprintf('max|x1(%d)-x1(%d)|=%.4f\n',j+1,j,abs(x1(j+1)-x1(j)));
+           break;
+       elseif (abs(x2(j+1)-x2(j))<=0.0001)
+           fprintf('max|x2(%d)-x2(%d)|=%.4f\n',j+1,j,abs(x2(j+1)-x2(j)));
+           break;
+       elseif (abs(x3(j+1)-x3(j))<=0.0001)
+           fprintf('max|x3(%d)-x3(%d)|=%.4f\n',j+1,j,abs(x3(j+1)-x3(j)));
+           break;
+       elseif (abs(x4(j+1)-x4(j))<=0.0001)
+           fprintf('max|x4(%d)-x4(%d)|=%.4f\n',j+1,j,abs(x4(j+1)-x4(j)));
+           break;
+       end
+end
+e=[x1(1) x2(1) x3(1) x4(1); x1(2) x2(2) x3(2) x4(2) ; x1(3) x2(3) x3(3) x4(3) ; x1(4) x2(4) x3(4) x4(4); x1(5) x2(5) x3(5) x4(5); x1(6) x2(6) x3(6) x4(6); x1(7) x2(7) x3(7) x4(7);x1(8) x2(8) x3(8) x4(8)]

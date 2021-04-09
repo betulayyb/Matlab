@@ -1,4 +1,4 @@
-    clc;clear all;
+clc;clear all;
 giris=input('giris=');
 bosluk=giris-1;
 yildiz=1; 
